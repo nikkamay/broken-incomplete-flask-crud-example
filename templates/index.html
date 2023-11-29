@@ -1,14 +1,70 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Student Management</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7; /* light gray background */
+      color: #333; /* dark text color */
+    }
+
+    h3 {
+      color: #ff69b4; /* pink color for heading */
+    }
+
+    form {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #ff69b4; /* pink color for labels */
+    }
+
+    input {
+      padding: 8px;
+      width: 100%;
+      margin-bottom: 12px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #ff69b4; /* pink color for buttons */
+      color: #fff; /* white text color */
+      padding: 10px 15px;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #d1478e; /* slightly darker pink on hover */
+    }
+
+    #studentList {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      background-color: #fff; /* white background for list items */
+      padding: 10px;
+      margin-bottom: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    li:hover {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+  </style>
 </head>
+
 <body>
   <div>
-
-    <div>    
+    <div>
       <h3>Add Student</h3>
       <form id="addStudentForm">
         <label for="addName">Name:</label>
@@ -19,8 +75,8 @@
         <br>
         <button type="button" id="addStudentButton">Add Student</button>
       </form>
-      </div>
-      <div>
+    </div>
+    <div>
       <h3>Update Student</h3>
       <form id="updateStudentForm">
         <label for="studentID">ID:</label>
@@ -34,8 +90,8 @@
         <br>
         <button type="button" id="updateStudentButton">Update Student</button>
       </form>
-      </div>
-      <div>
+    </div>
+    <div>
       <h3>Delete Student</h3>
       <form id="deleteStudentForm">
         <label for="name">Name:</label>
@@ -43,13 +99,11 @@
         <br>
         <button type="button" id="deleteStudentButton">Delete Student</button>
       </form>
-      </div>
-    
-      <div>
+    </div>
+    <div>
       <h3>Student List</h3>
       <h4> Student ID | Student Name | Student Email</h4>
       <ul id="studentList"></ul>
-    
       <script>
         $(document).ready(function() {
           // Get all students
@@ -66,12 +120,12 @@
               }
             }
           });
-    
+
           // Add student
           $('#addStudentButton').on('click', function() {
             var name = $('#addName').val();
             var email = $('#addEmail').val();
-    
+
             $.ajax({
               url: '/add',
               method: 'POST',
@@ -87,7 +141,7 @@
               }
             });
           });
-    
+
           // Update student
           $('#updateStudentButton').on('click', function() {
             var id = $('#id').val();
@@ -111,7 +165,7 @@
               }
             });
           });
-    
+
           // Delete student
           $('#deleteStudentButton').on('click', function() {
             var name = $('#deleteName').val();
@@ -133,9 +187,8 @@
           });
         });
       </script>
-      </div>
-
+    </div>
   </div>
-  
 </body>
+
 </html>
